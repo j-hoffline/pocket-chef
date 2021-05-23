@@ -3,6 +3,24 @@ import Img1 from "./images/carousel/mealplanning.jpg";
 import Img2 from "./images/carousel/cooking.jpg";
 import Img3 from "./images/carousel/couple-cooking.jpg";
 
+let imgArr = [
+    {
+        img: Img1,
+        title: "Mealplanning - How to get started",
+        description: "Tips and Tricks on planning your meals"
+    },
+    {
+        img: Img2,
+        title: "Cooking for Beginners",
+        description: "Learning how to cook? Here's how to get started."
+    }, 
+    {
+        img: Img3,
+        title: "Reigniting Your Family's Love of Cooking",
+        description: "Time to dust off the dinner table."
+    },
+];
+
 function Carousel() {
     return(
         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel" >
@@ -15,7 +33,17 @@ function Carousel() {
                         aria-label="Slide 3"></button>
             </div>
             <div className="carousel-inner">
-                <div className="carousel-item active">
+                {imgArr.map((feature, idx) => {
+                    return(
+                    <div className={idx === 0 ? "carousel-item active" : "carousel-item"}>
+                        <img src={feature.img} className="d-block w-100" alt="..." />
+                        <div className="carousel-caption d-none d-md-block">
+                            <h4>{feature.title}</h4>
+                            <p>{feature.description}</p>
+                        </div>
+                    </div>);
+                })}
+                {/* <div className="carousel-item active">
                     <img src={Img1} className="d-block w-100" alt="..." />
                     <div className="carousel-caption d-none d-md-block">
                         <h5>First slide label</h5>
@@ -35,7 +63,7 @@ function Carousel() {
                         <h5>Third slide label</h5>
                         <p>Some representative placeholder content for the third slide.</p>
                     </div>
-                </div>
+                </div> */}
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                     data-bs-slide="prev">

@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from './images/logo.png';
 
+let isLoggedIn = false;
 
 function Nav() {
     return(
@@ -30,8 +31,13 @@ function Nav() {
             </ul>
         </div>
             <div className="d-flex">
-                <button className="btn btn-outline-secondary" id="login-button">Log in</button>
-                <button className="btn btn-primary" id="register-button">Sign up</button>
+                { !isLoggedIn ?
+                <div>
+                    <button className="btn btn-outline-secondary" id="login-button">Log in</button>
+                    <button className="btn btn-primary" id="register-button">Sign up</button>
+                </div>
+
+                : <button className="btn btn-outline-secondary" id="logout-button">Logout</button> }
             </div>
         </div>
     </nav>);

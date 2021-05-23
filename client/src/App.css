@@ -1,0 +1,70 @@
+button {
+  margin: 8px;
+  color: white;
+}
+
+#login-button {
+  border-color: coral;
+  color: coral;
+}
+#login-button:hover {
+  background-color: coral;
+  color: white;
+  border-color: coral;
+}
+
+.carousel-item {
+  height: 70vh;
+}
+.carousel-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 130%;
+}
+
+.carousel-caption {
+  background-color: rgba(20, 20, 20, 0.6);
+}
+
+.section-header {
+  margin: 2%;
+  text-align: center;
+  color: #008081;
+  font-family: 'Judson', sans-serif;
+}
+
+#cuisine-cards {
+  white-space: nowrap;
+  position: relative;
+  margin: auto;
+  
+  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: wrap;
+}
+
+.card {
+  position: relative;
+  padding: 0;
+  width: 15%;
+  height: auto;
+  margin: 2%;
+  transition-property: all;
+  transition-duration: 0.3s;
+  white-space: nowrap;
+  display: inline-block;
+} .card:hover {
+  background-color: rgb(133, 129, 129);
+  color: white;  
+  box-shadow:0 4px 6px rgb(192, 190, 190); 
+}
+
+.card img {
+  height: 50%;
+  width: 100%;
+
+  min-height: 162px;
+  max-height: 162px;
+
+}
