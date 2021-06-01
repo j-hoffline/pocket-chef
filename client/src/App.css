@@ -1,3 +1,9 @@
+@media screen and (max-width: 900px) {
+  .carousel {
+    display: none;
+  }
+}
+
 button {
   margin: 8px;
   color: white;
@@ -35,7 +41,6 @@ button {
 }
 
 #cuisine-cards {
-  white-space: nowrap;
   position: relative;
   margin: auto;
   
@@ -46,15 +51,24 @@ button {
 
 .card {
   position: relative;
-  padding: 0;
-  width: 15%;
   height: auto;
   margin: 2%;
+  padding: 0;
   transition-property: all;
   transition-duration: 0.3s;
-  white-space: nowrap;
   display: inline-block;
-} .card:hover {
+} 
+.card:hover {
+  box-shadow:0 4px 6px rgb(192, 190, 190); 
+}
+.card a {
+  text-decoration: none;
+  color: #404040;
+}
+.card h5 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.cuisine-card:hover {
   background-color: rgb(133, 129, 129);
   color: white;  
   box-shadow:0 4px 6px rgb(192, 190, 190); 
@@ -67,4 +81,44 @@ button {
   min-height: 162px;
   max-height: 162px;
 
+}
+
+.article-card {
+  position: relative;
+  max-height: 10%;
+  max-width: initial;
+  margin-top: 1.2%;
+  margin-bottom: 1.2%;  
+} 
+.article-card img, .recipe-card img {
+  transition-property: all;
+  transition-duration: 0.3s;
+  height: 100%;
+  width: 100%;
+}
+
+.article-card-text {
+  position: absolute;
+  width: 95%;
+  color: white;
+  text-align: center;
+  bottom: 0;
+}
+
+.recipe-card {
+  position: relative;
+  max-height: 5%;
+  height: 5%;
+  max-width: initial;
+  margin-top: 1.2%;
+  margin-bottom: 1.2%;  
+}
+
+.form-group {
+  margin: 2%;
+}
+
+.list-group-item input {
+  margin: 1% 1% 0 0;
+  scale: 1.5;
 }
