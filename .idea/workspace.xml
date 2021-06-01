@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89a29bef-41e1-4d7e-a3ed-d9c22c419b4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/RecipeDetailPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/RecipesPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/SearchPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/images/recipe-main.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Carousel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SearchPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +73,7 @@
       <workItem from="1621227360519" duration="309000" />
       <workItem from="1621801335330" duration="35123000" />
       <workItem from="1622311532505" duration="6745000" />
-      <workItem from="1622319638486" duration="11433000" />
+      <workItem from="1622319638486" duration="25532000" />
     </task>
     <servers />
   </component>

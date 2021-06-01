@@ -40,9 +40,6 @@ function Nav() {
                         </div>
                         : <button className="btn btn-link" id="logout-button">Logout</button>}
                 </div>
-                <div className="nav-item">
-                    <i className="fas fa-search" style={{height: ""}}></i>
-                </div>
             </div>
         </nav>);
 }
