@@ -33,7 +33,7 @@ function Nav(props) {
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
             <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Recipes</a>
+                <a className="nav-link active" aria-current="page" href="/recipes">Recipes</a>
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#">Features</a>
@@ -70,7 +70,7 @@ function Nav(props) {
                     <RegisterModal setCurrentUser={setCurrentUser}/>
                 </div>
 
-                : <div className="mx-auto order-1"><button className="btn btn-outline-secondary" id="logout-button" onClick={logout}>Logout</button></div> }
+                : <div className="mx-auto order-1"><button className="btn btn-outline-secondary btn-link" id="logout-button" onClick={logout}>Logout</button></div> }
             </div>
         </div>
         </div>

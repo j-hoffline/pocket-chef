@@ -36,7 +36,7 @@ function Carousel() {
                 {imgArr.map((feature, idx) => {
                     return(
                     <div className={idx === 0 ? "carousel-item active" : "carousel-item"}>
-                        <img src={feature.img} className="d-block w-100" alt="..." />
+                        <img src={feature.img} className="d-block" alt="..." />
                         <div className="carousel-caption d-none d-md-block">
                             <h4>{feature.title}</h4>
                             <p>{feature.description}</p>
