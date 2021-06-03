@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 const fs = require('fs');
 var unirest = require("unirest");
@@ -15,17 +14,17 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
-	secret: process.env.PASSPORT_SECRET,
-	resave: false,
-	saveUninitialized: false
+    secret: '12345', //CHANGE THIS <---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    resave: false,
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 mongoose.connect("mongodb://localhost:27017/pocketChefDB",
-	{useNewUrlParser: true}, function() {
-		console.log("database connection successful");
-	}); //development url: mongodb+srv://jonathan-admin:clarkcs2021@cluster0.forfr.mongodb.net
+    {useNewUrlParser: true}, function () {
+        console.log("database connection successful");
+    }); //development url: mongodb+srv://jonathan-admin:clarkcs2021@cluster0.forfr.mongodb.net
 
 const recipeSchema = new mongoose.Schema({
     dietaryPreferences: Object, //Object of keys with boolean values Example: {vegetarian: false, vegan: true, etc.}
@@ -83,15 +82,15 @@ const userSchema = new mongoose.Schema({
     fullname: {
         type: String,
         require: true
-    }, 
+    },
     blogname: {
-        type: String, 
+        type: String,
         require: false,
         articles: {
             type: Array,
             require: true
         }
-    }, 
+    },
     savedRecipes: {
         type: Array,
         require: true
@@ -110,8 +109,8 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.listen(3001, function() {
-	console.log("server started at 3001");
+app.listen(3001, function () {
+    console.log("server started at 3001");
 });
 
 app.get('/node_get_current_user', function (req, res) {
@@ -214,7 +213,7 @@ app.post('/node_add_recipe', (req, res) => {
     const recipe = req.body;
     if (recipe._id) {
         //Update existing recipe
-        Recipe.updateOne({_id: recipe._id}, 
+        Recipe.updateOne({_id: recipe._id},
             {$set: recipe},
             {runValidators: true},
             (err, info) => {
@@ -290,3 +289,20 @@ app.get('/node_get_recipe_by_id', (req, res) => {
 // 		//file written successfully
 // 	  })
 // });
+
+
+app.get('/node_get_all_recipes', function (req, res) {
+    Recipe.find(function (err, data) {
+        if (err) {
+            res.send({
+                'massage': 'internal database error',
+                'data': []
+            })
+        } else {
+            res.send({
+                'massage': 'success',
+                'data': data
+            })
+        }
+    })
+})
