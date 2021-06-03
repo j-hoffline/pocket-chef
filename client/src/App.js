@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/recipes">
               <RecipesPage />
           </Route>
-          <Route exact path="/recipe_detail">
+          <Route exact path="/recipe_detail" currentUser={currentUser}>
               <RecipeDetailPage />
           </Route>
           <Route exact path="/search">

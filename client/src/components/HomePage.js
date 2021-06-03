@@ -17,7 +17,8 @@ let recipes = [{img: 'https://assets.epicurious.com/photos/594bff7eaedda61b72c18
 
 function HomePage() {
     return(
-        <div className="" style={{position: "relative", maxHeight: "10vh", height:"120px"}}>
+        <div className="" >
+            <div>
             <Carousel />
             <section id="cuisine-cards" className="container row align-center" style={{overflow: "hidden", maxHeight: "350px"}}>
                 <h2 className="section-header">What cuisine are you looking for?</h2>
@@ -34,6 +35,7 @@ function HomePage() {
                         })}
                     </div>
             </section>
+            </div>
             <section id="popular-recipes">
                 <h2 className="section-header">Popular Recipes</h2>
                 <div className="container">
@@ -72,6 +74,8 @@ function HomePage() {
                 </div>
             </section>
         </div>
+
+
     );
 }
 

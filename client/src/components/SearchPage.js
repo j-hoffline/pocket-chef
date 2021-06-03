@@ -7,9 +7,7 @@ const recipe_100 = require('./recipes100.json')
 
 function clearButton() {
     $('.form-check-input').prop("checked", false)
-
 }
-
 
 function SearchPage() {
     return (
@@ -98,11 +96,8 @@ function SearchPage() {
                                 })
                         }
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     );
 
