@@ -25,7 +25,7 @@ function RegisterModal(props) {
                 if (data.message === "success") {
                     setCurrentUser(data.user);
                     $('.modal-backdrop').hide();
-                    history.push("/")
+                    history.push("/");
                 } else {
                     setError(data.data.message);
                 }

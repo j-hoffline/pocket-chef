@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
@@ -10,7 +10,8 @@ function Nav(props) {
     const currentUser = props.currentUser;
     const setCurrentUser = props.setCurrentUser;
     const history = useHistory();
-
+    
+    //Log out user with backend and end session
     const logout = () => {
         $.get('/node_logout').done((data) => {
             if (data.message === "success") {
@@ -34,9 +35,6 @@ function Nav(props) {
             <ul className="navbar-nav">
             <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/recipes">Recipes</a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link" href="#">Features</a>
             </li>
             <li className="nav-item">
                 <a className="nav-link" href="#">About Us</a>
@@ -70,7 +68,16 @@ function Nav(props) {
                     <RegisterModal setCurrentUser={setCurrentUser}/>
                 </div>
 
-                : <div className="mx-auto order-1"><button className="btn btn-outline-secondary btn-link" id="logout-button" onClick={logout}>Logout</button></div> }
+                : <div className="mx-auto order-1">
+                    <Link to={{
+                        pathname: "/profile",
+                        state: {
+                            currentUser: currentUser
+                        }
+                    }}>
+                        <i id="user-icon" class="fas fa-user"></i>
+                    </Link>
+                    <button className="btn btn-outline-secondary" id="logout-button" onClick={logout}>Logout</button></div> }
             </div>
         </div>
         </div>

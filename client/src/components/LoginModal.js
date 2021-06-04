@@ -17,9 +17,13 @@ function LoginModal(props) {
         }
         $.post('/node_login', currUser).done((data) => {
             if (data.message === "success") {
-                setCurrentUser(data.user);
-                $('.modal-backdrop').hide();
-                history.push("/");
+                $.get('node_get_current_user').done((data) => {
+                    if (data.message === "success") {
+                        setCurrentUser(data.data);
+                        $('.modal-backdrop').hide();
+                        history.push("/");
+                    }
+                });
             } else {
                 console.log(data.data);
                 setError(data.data.message);

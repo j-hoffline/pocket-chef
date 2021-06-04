@@ -1,27 +1,21 @@
-import React from 'react';
-import Img1 from "./images/carousel/mealplanning.jpg";
-import Img2 from "./images/carousel/cooking.jpg";
-import Img3 from "./images/carousel/couple-cooking.jpg";
-
-let imgArr = [
-    {
-        img: Img1,
-        title: "Mealplanning - How to get started",
-        description: "Tips and Tricks on planning your meals"
-    },
-    {
-        img: Img2,
-        title: "Cooking for Beginners",
-        description: "Learning how to cook? Here's how to get started."
-    }, 
-    {
-        img: Img3,
-        title: "Reigniting Your Family's Love of Cooking",
-        description: "Time to dust off the dinner table."
-    },
-];
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import $ from 'jquery';
 
 function Carousel() {
+    const [featuredArticles, setFeatArticles] = useState([]);
+
+    //If articles are not loaded, make call to database and store data
+    useEffect(() => {
+        if (featuredArticles.length == 0) {
+            $.get('/node_get_all_articles').done((data) => {
+                if (data.message === "success") {
+                    setFeatArticles(data.data);
+                }
+            });
+        }
+    });
+
     return(
         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel" >
             <div className="carousel-indicators">
@@ -33,37 +27,19 @@ function Carousel() {
                         aria-label="Slide 3"></button>
             </div>
             <div className="carousel-inner">
-                {imgArr.map((feature, idx) => {
+                {featuredArticles.map((feature, idx) => {
+                    if (idx > 2) {return;}
                     return(
                     <div className={idx === 0 ? "carousel-item active" : "carousel-item"}>
-                        <img src={feature.img} className="d-block" alt="..." />
+                        <Link to={{pathname: '/article', state: {article: feature}}}>
+                        <img src={feature.image} className="d-block w-100" alt="..." />
                         <div className="carousel-caption d-none d-md-block">
-                            <h4>{feature.title}</h4>
-                            <p>{feature.description}</p>
+                            <h3>{feature.title}</h3>
                         </div>
-                    </div>);
+                        </Link>
+                    </div>
+                    );
                 })}
-                {/* <div className="carousel-item active">
-                    <img src={Img1} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div className="carousel-item">
-                    <img src={Img2} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                </div>
-                <div className="carousel-item">
-                    <img src={Img3} className="d-block w-100" alt="..." />
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div> */}
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                     data-bs-slide="prev">
