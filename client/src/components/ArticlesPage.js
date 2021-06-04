@@ -1,85 +1,62 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
-import Img1 from "./images/carousel/mealplanning.jpg";
-import Img2 from "./images/carousel/cooking.jpg";
-import Img3 from "./images/carousel/couple-cooking.jpg";
+import {Link, useHistory} from 'react-router-dom';
 import Loading from './images/loading.gif';
 import $ from "jquery";
 
-let imgArr = [
-    {
-        img: Img1,
-        title: "Mealplanning - How to get started",
-        description: "Tips and Tricks on planning your meals"
-    },
-    {
-        img: Img2,
-        title: "Cooking for Beginners",
-        description: "Learning how to cook? Here's how to get started."
-    }, 
-    {
-        img: Img3,
-        title: "Reigniting Your Family's Love of Cooking",
-        description: "Time to dust off the dinner table."
-    },
-    {
-        img: Img3,
-        title: "Reigniting Your Family's Love of Cooking",
-        description: "Time to dust off the dinner table."
-    },
-    {
-        img: Img3,
-        title: "Reigniting Your Family's Love of Cooking",
-        description: "Time to dust off the dinner table."
-    },
-    {
-        img: Img3,
-        title: "Reigniting Your Family's Love of Cooking",
-        description: "Time to dust off the dinner table."
-    },
-];
 
-
-function ArticlesPage() {
+function ArticlesPage(props) {
+    const history = useHistory();
+    const user = props.currentUser;
     const [isLoading, setIsLoading] = useState(true);
-        
-setTimeout(()=> {
-    setIsLoading(false);
-    console.log("hi: ", isLoading);
-}, 2000);
+    const [articles, setArticles] = useState([]);
+
+    //If component is loading, fetch article data from database
+    useEffect(() => {
+        if (isLoading) {
+        $.get('/node_get_all_articles').done((data) => {
+            if (data.message === "success") {
+                setArticles(data.data);
+                setIsLoading(false);
+            } else {
+                alert(data.message);
+            }
+        });
+        }
+    });
 
     return(
         <section id="articles">
         {isLoading ? 
-            <div style={{textAlign: "center"}}><img src={Loading} alt="Loading..." style={{margin: "auto", height: "15%", width: "15%"}}/><h3>scrambling eggs. . .</h3></div> 
+            <div style={{textAlign: "center"}}><img src={Loading} alt="Loading..." style={{margin: "auto", height: "20%", width: "15%"}}/><h3>scrambling eggs. . .</h3></div> 
         : 
         <div className="container-fluid">
             <h1 className="section-header">Read what's cooking.</h1>
             <hr style={{margin: "0 10% 0 10%"}}/>
 
+            {user && <button type="button" className="btn btn-secondary" onClick={() => {
+                history.push("/add_article");
+            }}>Add Article</button>}
+
             <div id="article-grid" className="container" style={{marginTop: "8%"}}>
-            <div className="row row-cols-xs-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 g-4" style={{justifyContent: "center"}}>
-                {imgArr.map((article, idx) => {
+            <div className="row row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 " style={{justifyContent: "center"}}>
+                {articles.map((article, idx) => {
                     return(
+                        <div className="col">
                         <div id={idx} className="card">
-                        <a href={"/article?article_id=" + idx}>
-                            <img src={article.img} class="card-img-top" alt="..." />
+                        <Link to={{
+                            pathname: "/article",
+                            state: {
+                                article: article
+                            }
+                        }}>
+                            <img src={article.image} class="card-img-top" alt="..." />
                             <div class="card-body">
                                 <h5 class="card-title">{article.title}</h5>
-                                <p class="card-text">{article.description}</p>
-                                <p class="card-text"><small class="text-muted">Author</small></p>
+                                <p class="card-text"><small class="text-muted">{article.author}</small></p>
                             </div>
-                        </a>
+                        </Link>
                         </div>
-                            // <div id={idx} className="col-6 article-card">
-                            //     <a href={"/article?article_id=" + idx}>
-                            //         <img src={article.img}/>
-                            //         <div className="article-card-text">
-                            //             <h4>{article.title}</h4>
-                            //             <p>{article.description}</p>
-                            //         </div>
-                            //     </a>
-                            // </div>
+                        </div>
                     );
                 })
                 }
