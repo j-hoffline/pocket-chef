@@ -63,7 +63,7 @@ function SetUpRecipes() {
 
     section_values = [popular_recs, fast_recs, less_ingr_recs, gluten_recs, veg_recs, easy_dinner_recs, dessert_recs]
 
-    console.log(recipes[5])
+
     return recipes
 }
 

@@ -1,5 +1,7 @@
 import $ from "jquery"
 import {useLocation, Link} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+const recipes_100 = require('./recipes.json')
 
 
 function convertDietString(str) {
@@ -21,10 +23,57 @@ function convertDietString(str) {
     }
 }
 
+let recipes_all = []
+
+
+function SetUpRecipes() {
+    const [error, setError] = useState(null)
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [recipes, setRecipes] = useState([])
+
+    useEffect(() => {
+        if (!isLoaded) {
+            $.getJSON('/node_get_all_recipes').done(function (json) {
+                if (json.message === 'success') {
+                    setRecipes(json.data)
+                    setIsLoaded(true)
+                } else {
+                    setError(json.message)
+                }
+            })
+        }
+    })
+
+    recipes_all = recipes
+    return recipes
+}
+
+
 function RecipeDetailPage(props) {
-    const currentUser = props.currentUser;
+    recipes_all = SetUpRecipes()
+    let recipe
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString)
+    const rec_title = urlParams.get('rec_title')
+
     const location = useLocation()
-    const recipe = location.state.recipe
+    const currentUser = props.currentUser;
+
+
+    console.log(rec_title)
+
+    if (rec_title) {
+        recipes_100.filter((rec) => {
+            if (rec.title === rec_title) {
+                recipe = rec
+            }
+        })
+    } else {
+        recipe = location.state.recipe
+    }
+
+    console.log(recipe)
     let dietString = recipe.timeToCook + " minutes, " + recipe.servings + " servings, "
 
     for (let diet in recipe.dietaryPreferences) {
@@ -46,9 +95,9 @@ function RecipeDetailPage(props) {
                     {
                         currentUser ? null :
                             <a className='bookmark_button' href="">
-                            <i className="far fa-bookmark fa-3x"
-                               aria-hidden="true"></i>
-                        </a>
+                                <i className="far fa-bookmark fa-3x"
+                                   aria-hidden="true"></i>
+                            </a>
                     }
 
                     <h5>

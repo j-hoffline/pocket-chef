@@ -249,13 +249,14 @@ app.post('/node_add_recipe', (req, res) => {
 });
 
 app.get('/node_get_recipe_by_id', (req, res) => {
-    Recipe.find({_id: req.query.recipe_id}, (err, data) => {
+    Recipe.find({_id: req.query.rec_id}, (err, data) => {
         if (err || data.length === 0) {
             res.send({
                 message: "internal database error",
                 data: {}
             });
         } else {
+
             res.send({
                 message: "success",
                 data: data[0]
@@ -306,3 +307,30 @@ app.get('/node_get_all_recipes', function (req, res) {
         }
     })
 })
+
+app.get('/get_recipes_by_filters',
+    (req, res) => {
+        const search_key = req.query.search_key
+        console.log(search_key)
+        Recipe.find({
+               $or: [
+                    {overview: {$regex: search_key}},
+                    {title: {$regex: search_key}}
+                ]
+            }, (err, data) => {
+                if (err) {
+                    res.send({
+                        "message": "db error",
+                        "data": []
+                    })
+                } else {
+                    res.send({
+                        "message": "success",
+                        "data": data
+                    })
+                }
+            }
+        )
+
+    }
+)

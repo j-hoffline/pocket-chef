@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89a29bef-41e1-4d7e-a3ed-d9c22c419b4d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/recipes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RecipeDetailPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RecipeDetailPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/RecipesPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/RecipesPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SearchPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +33,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectId" id="1sV1ztOeu2NF0F5v863GpasfV5m" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -40,7 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,6 +63,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components" />
       <recent name="C:\Users\J\Documents\GitHub\pocket-chef\src\components\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -74,6 +84,7 @@
       <workItem from="1621801335330" duration="35123000" />
       <workItem from="1622311532505" duration="6745000" />
       <workItem from="1622319638486" duration="58315000" />
+      <workItem from="1622758927175" duration="23458000" />
     </task>
     <servers />
   </component>
