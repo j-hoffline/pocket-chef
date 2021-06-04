@@ -16,7 +16,7 @@ function Nav(props) {
     const logout = () => {
         $.get('/node_logout').done((data) => {
             if (data.message === "success") {
-                history.replace("/");
+                historygi.replace("/");
                 setCurrentUser(null);
             }
         })
